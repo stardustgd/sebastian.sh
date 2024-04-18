@@ -19,7 +19,7 @@ export default function NavBar() {
   ]
 
   return (
-    <nav className="py-10 flex justify-end items-center">
+    <nav className="py-10 flex justify-end items-center pr-5 lg:pr-0">
       <div className="flex items-center gap-5">
         {socials.map((social, index) => {
           const Icon = social.icon
@@ -29,6 +29,7 @@ export default function NavBar() {
               target="_blank"
               key={index}
               aria-label={social.label}
+              title={social.label}
             >
               <Icon
                 className={`size-5 transition-all hover:scale-150 hover:fill-[${social.color}]`}

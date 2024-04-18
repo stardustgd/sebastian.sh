@@ -4,7 +4,7 @@ export default function MainSection() {
   return (
     <section>
       <div className="grid grid-cols-1 lg:grid-cols-12">
-        <div className="col-span-7">
+        <div className="col-span-7 text-center md:text-left px-6 lg:px-0">
           <h1 className="text-4xl lg:text-6xl font-bold text-[#eceff4] mb-4">
             Sebastian Ala Torre
           </h1>
@@ -12,7 +12,7 @@ export default function MainSection() {
             Computer Science & Engineering @ UC Irvine
           </p>
         </div>
-        <div className="col-span-5">
+        <div className="col-span-5 mt-10 lg:mt-0 px-6 lg:px-0">
           <p className="font-light">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Nulla
