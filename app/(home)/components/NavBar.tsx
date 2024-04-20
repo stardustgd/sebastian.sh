@@ -8,13 +8,13 @@ export default function NavBar() {
       link: 'https://www.linkedin.com/in/sebastian-ala-torre-0654502a9/',
       label: 'LinkedIn',
       icon: SiLinkedin,
-      color: '#5e81ac',
+      color: 'hover:fill-[#5e81ac]',
     },
     {
       link: 'https://www.github.com/stardustgd',
       label: 'GitHub',
       icon: SiGithub,
-      color: '#eceff4',
+      color: 'hover:fill-[#4c566a]',
     },
   ]
 
@@ -32,7 +32,7 @@ export default function NavBar() {
               title={social.label}
             >
               <Icon
-                className={`size-5 transition-all hover:scale-150 hover:fill-[${social.color}]`}
+                className={`size-5 transition-all hover:scale-150 ${social.color}`}
               />
             </Link>
           )
