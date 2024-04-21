@@ -1,26 +1,44 @@
-import React from 'react'
+'use client'
+import React, { useTransition, useState } from 'react'
+import AboutSection from './AboutSection'
+import EducationSection from './EducationSection'
+import ExperienceSection from './ExperienceSection'
+import ProjectSection from './ProjectSection'
 import SectionLink from './SectionLink'
 
 const sectionLinks = [
   {
     title: 'About',
     href: '#about',
+    content: <AboutSection />,
   },
   {
     title: 'Experience',
     href: '#experience',
+    content: <ExperienceSection />,
   },
   {
     title: 'Education',
     href: '#education',
+    content: <EducationSection />,
   },
   {
     title: 'Projects',
     href: '#projects',
+    content: <ProjectSection />,
   },
 ]
 
 export default function MainSection() {
+  const [tab, setTab] = useState('About')
+  const [, startTransition] = useTransition()
+
+  const handleTabChange = (id: string) => {
+    startTransition(() => {
+      setTab(id)
+    })
+  }
+
   return (
     <section id="about">
       <div className="grid grid-cols-1 lg:grid-cols-12">
@@ -37,42 +55,20 @@ export default function MainSection() {
             <div className="row-span-4 mt-4">
               <ul className="flex items-center gap-5 justify-center md:justify-normal">
                 {sectionLinks.map((section, index) => (
-                  <li key={index}>
-                    <SectionLink href={section.href} title={section.title} />
-                  </li>
+                  <SectionLink
+                    key={index}
+                    selectTab={() => handleTabChange(section.title)}
+                    active={tab === section.title}
+                  >
+                    {section.title}
+                  </SectionLink>
                 ))}
               </ul>
             </div>
           </div>
         </div>
         <div className="col-span-5 mt-10 lg:mt-0 px-6 lg:px-0">
-          <p className="font-light">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Nulla
-            porttitor massa id neque. Ut lectus arcu bibendum at varius vel
-            pharetra. Nec nam aliquam sem et tortor consequat. Aliquam eleifend
-            mi in nulla posuere sollicitudin aliquam. Dictum non consectetur a
-            erat nam at lectus urna duis. At tellus at urna condimentum mattis
-            pellentesque id nibh tortor. Volutpat diam ut venenatis tellus in
-            metus vulputate eu. Nibh nisl condimentum id venenatis a condimentum
-            vitae sapien. At risus viverra adipiscing at in tellus integer
-            feugiat. Vivamus at augue eget arcu dictum varius duis at
-            consectetur. Ac feugiat sed lectus vestibulum mattis ullamcorper
-            velit.
-            <br /> <br />
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Nulla
-            porttitor massa id neque. Ut lectus arcu bibendum at varius vel
-            pharetra. Nec nam aliquam sem et tortor consequat. Aliquam eleifend
-            mi in nulla posuere sollicitudin aliquam. Dictum non consectetur a
-            erat nam at lectus urna duis. At tellus at urna condimentum mattis
-            pellentesque id nibh tortor. Volutpat diam ut venenatis tellus in
-            metus vulputate eu. Nibh nisl condimentum id venenatis a condimentum
-            vitae sapien. At risus viverra adipiscing at in tellus integer
-            feugiat. Vivamus at augue eget arcu dictum varius duis at
-            consectetur. Ac feugiat sed lectus vestibulum mattis ullamcorper
-            velit.
-          </p>
+          {sectionLinks.find((t) => t.title === tab)?.content}
         </div>
       </div>
     </section>
