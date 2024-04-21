@@ -1,5 +1,4 @@
 import React from 'react'
-import Link from 'next/link'
 import SectionLink from './SectionLink'
 
 const sectionLinks = [
@@ -10,6 +9,10 @@ const sectionLinks = [
   {
     title: 'Experience',
     href: '#experience',
+  },
+  {
+    title: 'Education',
+    href: '#education',
   },
   {
     title: 'Projects',
@@ -24,15 +27,15 @@ export default function MainSection() {
         <div className="col-span-7 text-center md:text-left px-6 lg:px-0">
           <div className="grid grid-rows-2 lg:grid-rows-5">
             <div className="row-span-2">
-              <h1 className="text-4xl lg:text-6xl font-bold text-[#eceff4] mb-4">
+              <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold text-[#eceff4] mb-4">
                 Sebastian Ala Torre
               </h1>
-              <h2 className="text-[#d8dee9] text-lg lg:text-xl font-extralight">
+              <h2 className="text-[#d8dee9] text-sm md:text-lg lg:text-xl font-extralight">
                 Computer Science & Engineering @ UC Irvine
               </h2>
             </div>
             <div className="row-span-4 mt-4">
-              <ul className="flex items-center gap-5">
+              <ul className="flex items-center gap-5 justify-center md:justify-normal">
                 {sectionLinks.map((section, index) => (
                   <li key={index}>
                     <SectionLink href={section.href} title={section.title} />
