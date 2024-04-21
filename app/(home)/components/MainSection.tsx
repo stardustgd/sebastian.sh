@@ -43,7 +43,7 @@ export default function MainSection() {
     <section id="about">
       <div className="grid grid-cols-1 lg:grid-cols-12">
         <div className="col-span-7 text-center md:text-left px-6 lg:px-0">
-          <div className="grid grid-rows-2 lg:grid-rows-5">
+          <div className="grid grid-rows-2 lg:grid-rows-5 lg:fixed">
             <div className="row-span-2">
               <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold text-[#eceff4] mb-4">
                 Sebastian Ala Torre
