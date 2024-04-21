@@ -49,7 +49,7 @@ export default function MainSection() {
                 Sebastian Ala Torre
               </h1>
               <h2 className="text-[#d8dee9] text-sm md:text-lg lg:text-xl font-extralight">
-                Computer Science & Engineering @ UC Irvine
+                Computer Science @ UC Irvine
               </h2>
             </div>
             <div className="row-span-4 mt-4">
