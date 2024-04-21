@@ -9,13 +9,14 @@ type Project = {
     tags: string[]
   }
 }
-export default function ProjectComponent({ project }: Project) {
+
+export default function Project({ project }: Project) {
   const { title, description, link, image, tags } = project
   return (
     <div className="max-w rounded overflow-hidden shadow-lg mb-10 hover:border-t-4 hover:border-[#5e81ac] transition-all hover:scale-105">
       <Link href={`${link}`} target="_blank">
         <img
-          className="w-full max-h-24 object-cover"
+          className="w-full max-h-40 object-cover"
           src={`${image}`}
           alt={`${title}`}
         />

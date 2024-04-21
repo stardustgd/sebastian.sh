@@ -9,7 +9,7 @@ export default function ProjectSection() {
         'Interactive campus mobile app for Antelope Valley College using the Google Maps SDK. View the buildings on campus, learn about them, and even find where a class is located!',
       link: 'https://github.com/AVC-CS-Committee/InteractiveCampus',
       image:
-        'https://user-images.githubusercontent.com/97070073/199654750-9662d503-29fb-4030-9614-7040b20bb376.png',
+        'https://github.com/AVC-CS-Committee/InteractiveCampusMap/raw/assets/demo0.jpg?raw=true',
       tags: ['Android Studio', 'Java', 'Flutter', 'Dart', 'Figma', 'GitHub'],
     },
     {
@@ -17,8 +17,7 @@ export default function ProjectSection() {
       description:
         'Console based banking application made in x86 Assembly. Features a text file database with multi-account capabilities.',
       link: 'https://github.com/stardustgd/x86-Bank',
-      image:
-        'https://static-00.iconduck.com/assets.00/assembly-icon-1024x1024-lc5e1bk1.png',
+      image: 'x86Bank.png',
       tags: ['Assembly', 'PowerShell', 'Bash'],
     },
     {
@@ -26,8 +25,7 @@ export default function ProjectSection() {
       description:
         'The website you are currently on! Built with Next.js, TypeScript, and Tailwind CSS.',
       link: 'https://github.com/stardustgd/stardustgd.github.io',
-      image:
-        'https://raw.githubusercontent.com/stardustgd/dotfiles/assets/screenshot.png',
+      image: 'portfolio_sh.png',
       tags: ['Next.js', 'TypeScript', 'Tailwind'],
     },
   ]
