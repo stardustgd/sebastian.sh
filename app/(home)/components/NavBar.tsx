@@ -1,9 +1,15 @@
 import Link from 'next/link'
 import React from 'react'
-import { SiGithub, SiLinkedin } from 'react-icons/si'
+import { SiGithub, SiLinkedin, SiGmail } from 'react-icons/si'
 
 export default function NavBar() {
   const socials = [
+    {
+      link: 'mailto:sdalator@uci.edu',
+      label: 'Email',
+      icon: SiGmail,
+      color: 'hover:fill-[#bf616a]',
+    },
     {
       link: 'https://www.linkedin.com/in/sebastian-ala-torre-0654502a9/',
       label: 'LinkedIn',
