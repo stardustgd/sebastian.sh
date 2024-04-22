@@ -36,7 +36,7 @@ export default function GenericCard({
         </div>
       </div>
       <div className="p-0 mb-6">
-        <p className="block font-sans text-base antialiased font-light leading-relaxed text-inherit">
+        <p className="block font-sans text-base antialiased font-light leading-relaxed text-inherit px-3">
           {description}
         </p>
       </div>
