@@ -5,7 +5,7 @@ export default function EducationSection() {
   const schools = [
     {
       title: 'University of California, Irvine',
-      titleDesc: "Bachelor's Degree, Computer Science",
+      titleDesc: "Bachelor's Degree, Computer Science & Engineering",
       subheading: 'Fall 2023 - Present',
       description: 'Expected graduation in fall 2025. GPA: 3.45',
       image: 'ucirvinelogo.png',
