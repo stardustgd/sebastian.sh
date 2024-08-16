@@ -13,6 +13,14 @@ export default function ProjectSection() {
       tags: ['Android Studio', 'Java', 'Flutter', 'Dart', 'Figma', 'GitHub'],
     },
     {
+      title: 'Soñando Sin Miedo',
+      description:
+        'Next.js website for a non-profit organization aiming to empower scholars from underprivileged backgrounds.',
+      link: 'https://sonando-sin-miedo-userisanapples-projects.vercel.app/',
+      image: 'sonando_sin_miedo.png',
+      tags: ['Next.js', 'Tailwind CSS', 'TypeScript', 'Framer', 'Figma'],
+    },
+    {
       title: 'x86 Bank',
       description:
         'Console based banking application made in x86 Assembly. Features a text file database with multi-account capabilities.',
