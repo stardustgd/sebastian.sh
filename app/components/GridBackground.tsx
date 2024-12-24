@@ -37,7 +37,7 @@ export default function GridBackground() {
 
   useEffect(() => {
     const resizeObserver = new ResizeObserver((entries) => {
-      for (let entry of entries) {
+      for (const entry of entries) {
         const width = entry.contentRect.width
         const height = entry.contentRect.height
 
@@ -49,13 +49,15 @@ export default function GridBackground() {
       }
     })
 
-    if (gridRef.current) {
-      resizeObserver.observe(gridRef.current)
+    const currentGridRef = gridRef.current
+
+    if (currentGridRef) {
+      resizeObserver.observe(currentGridRef)
     }
 
     return () => {
-      if (gridRef.current) {
-        resizeObserver.unobserve(gridRef.current)
+      if (currentGridRef) {
+        resizeObserver.unobserve(currentGridRef)
       }
     }
   }, [gridRef])
