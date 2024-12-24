@@ -36,16 +36,29 @@ export default function GridBackground() {
   }
 
   useEffect(() => {
+    let previousWidth: number | null = null
+    let previousHeight: number | null = null
+
     const resizeObserver = new ResizeObserver((entries) => {
       for (const entry of entries) {
         const width = entry.contentRect.width
         const height = entry.contentRect.height
 
-        if (width < 640) setNumSquares(15)
-        else if (width < 768) setNumSquares(25)
-        else setNumSquares(50)
+        const widthChanged =
+          previousWidth === null || Math.abs(width - previousWidth) >= 96
+        const heightChanged =
+          previousHeight === null || Math.abs(height - previousHeight) >= 96
 
-        setDimensions({ width, height })
+        if (widthChanged || heightChanged) {
+          previousWidth = width
+          previousHeight = height
+
+          if (width < 640) setNumSquares(15)
+          else if (width < 768) setNumSquares(25)
+          else setNumSquares(50)
+
+          setDimensions({ width, height })
+        }
       }
     })
 
