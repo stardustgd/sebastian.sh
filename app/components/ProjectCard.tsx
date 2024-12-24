@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { FaGithub, FaLink } from 'react-icons/fa'
+import { motion } from 'framer-motion'
 
 type ProjectCardProps = {
   title: string
@@ -32,13 +33,23 @@ export default function ProjectCard({
           </h1>
           <div className="hidden md:flex flex-row gap-4">
             {repoLink && (
-              <Link href={repoLink}>
-                <FaGithub className="size-8 fill-[#ECEFF4]" />
+              <Link href={repoLink} target="_blank">
+                <motion.div
+                  whileHover={{ scale: 1.25 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <FaGithub className="size-8 fill-[#ECEFF4]" />
+                </motion.div>
               </Link>
             )}
             {webLink && (
-              <Link href={webLink}>
-                <FaLink className="size-8 fill-[#ECEFF4]" />
+              <Link href={webLink} target="_blank">
+                <motion.div
+                  whileHover={{ scale: 1.25 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <FaLink className="size-8 fill-[#ECEFF4]" />
+                </motion.div>
               </Link>
             )}
           </div>
@@ -54,13 +65,23 @@ export default function ProjectCard({
           </div>
           <div className="flex flex-row gap-8 justify-center md:hidden">
             {repoLink && (
-              <Link href={repoLink}>
-                <FaGithub className="size-8 fill-[#ECEFF4]" />
+              <Link href={repoLink} target="_blank">
+                <motion.div
+                  whileHover={{ scale: 1.25 }}
+                  whileTap={{ scale: 0.8 }}
+                >
+                  <FaGithub className="size-8 fill-[#ECEFF4]" />
+                </motion.div>
               </Link>
             )}
             {webLink && (
-              <Link href={webLink}>
-                <FaLink className="size-8 fill-[#ECEFF4]" />
+              <Link href={webLink} target="_blank">
+                <motion.div
+                  whileHover={{ scale: 1.25 }}
+                  whileTap={{ scale: 0.8 }}
+                >
+                  <FaLink className="size-8 fill-[#ECEFF4]" />
+                </motion.div>
               </Link>
             )}
           </div>
@@ -69,12 +90,13 @@ export default function ProjectCard({
             <div className="flex flex-row justify-center flex-wrap gap-2">
               {tags &&
                 tags.map((tag, index) => (
-                  <span
+                  <motion.span
                     key={index}
+                    whileHover={{ scale: 1.1, background: '#81A1C1' }}
                     className="bg-[#5D81AC] w-fit rounded-full px-4 py-1"
                   >
                     {tag}
-                  </span>
+                  </motion.span>
                 ))}
             </div>
           </div>
