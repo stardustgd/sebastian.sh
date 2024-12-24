@@ -20,21 +20,6 @@ export default function GridBackground() {
     return [Math.floor(Math.random() * rows), Math.floor(Math.random() * cols)]
   }
 
-  function calculateGridSize() {
-    if (gridRef.current) {
-      const { clientWidth, clientHeight } = gridRef.current
-
-      if (clientWidth < 640) setNumSquares(15)
-      else if (clientWidth < 768) setNumSquares(25)
-      else setNumSquares(50)
-
-      setDimensions({
-        width: clientWidth,
-        height: clientHeight,
-      })
-    }
-  }
-
   function fillRandomSquares(numSquares: number) {
     return Array.from({ length: numSquares }, (_, i) => ({
       id: i,
@@ -51,10 +36,28 @@ export default function GridBackground() {
   }
 
   useEffect(() => {
-    calculateGridSize()
-    window.addEventListener('resize', calculateGridSize)
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (let entry of entries) {
+        const width = entry.contentRect.width
+        const height = entry.contentRect.height
 
-    return () => window.removeEventListener('resize', calculateGridSize)
+        if (width < 640) setNumSquares(15)
+        else if (width < 768) setNumSquares(25)
+        else setNumSquares(50)
+
+        setDimensions({ width, height })
+      }
+    })
+
+    if (gridRef.current) {
+      resizeObserver.observe(gridRef.current)
+    }
+
+    return () => {
+      if (gridRef.current) {
+        resizeObserver.unobserve(gridRef.current)
+      }
+    }
   }, [gridRef])
 
   useEffect(() => {
