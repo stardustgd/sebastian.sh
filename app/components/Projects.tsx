@@ -26,7 +26,7 @@ export default function Projects() {
       title: 'Interactive Campus Map',
       description:
         'Mobile application for Antelope Valley College students to easily discover and access campus resources. Explore different campus buildings, learn about the resources available in each, and filter buildings by type.',
-      imageSrc: '/avc_interactive_map.jpg',
+      imageSrc: '/avc_interactive_map.png',
       imageAlt: 'AVC Interactive Campus Map',
       repoLink: 'https://github.com/AVC-CS-Committee/InteractiveCampusMap',
       webLink: null,
