@@ -4,10 +4,14 @@ import Projects from './components/Projects'
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
-      <HeroSection />
-      <Projects />
-      <Contact />
-    </div>
+    <>
+      <div className="w-full h-screen sticky top-0">
+        <HeroSection />
+      </div>
+      <div className="relative">
+        <Projects />
+        <Contact />
+      </div>
+    </>
   )
 }
