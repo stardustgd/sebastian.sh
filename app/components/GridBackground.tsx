@@ -97,7 +97,11 @@ export default function GridBackground() {
             delay: index * 0.5,
             repeatType: 'reverse',
           }}
-          onAnimationComplete={() => getNewSquarePos(id)}
+          onUpdate={(latest) => {
+            if (latest.opacity === 0) {
+              getNewSquarePos(id)
+            }
+          }}
           key={id}
           className="absolute"
           style={{
