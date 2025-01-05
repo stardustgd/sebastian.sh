@@ -19,7 +19,7 @@ export default function Projects() {
       imageSrc: '/sonando_sin_miedo.png',
       imageAlt: 'Soñando Sin Miedo image',
       repoLink: null,
-      webLink: '',
+      webLink: 'https://sonandosinmiedo.org',
       tags: ['Next.js', 'TypeScript', 'Figma', 'Framer Motion'],
     },
     {
