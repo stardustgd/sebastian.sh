@@ -5,12 +5,12 @@ export default function Projects() {
     {
       title: 'Smart Pet Feeder',
       description:
-        'An automated smart pet feeder powered by a Raspberry Pi and is controlled through a web app. Users can schedule feeding times, set up activities, play calming sounds, and check in on their pets via video call. This project is currently under development, with exciting features on the way!',
+        'A device designed to support pets dealing with separation anxiety by enabling owners to care for their pets easily and remotely. Users can schedule feeding times, manually feed, and check in on their pets via live video stream. This is my UC Irvine senior capstone project!',
       imageSrc: '/smartpetfeeder.png',
       imageAlt: 'Smart Pet Feeder logo',
       repoLink: 'https://github.com/stardustgd/SmartPetFeeder',
       webLink: 'https://smart-pet-feeder.vercel.app/',
-      tags: ['Next.js', 'TypeScript', 'Raspberry Pi'],
+      tags: ['Next.js', 'Express.js', 'Node.js', 'MongoDB', 'Raspberry Pi'],
     },
     {
       title: 'Soñando Sin Miedo',
