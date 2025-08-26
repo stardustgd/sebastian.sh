@@ -1,27 +1,7 @@
 import Link from 'next/link'
-import { SiGmail, SiLinkedin, SiGithub } from 'react-icons/si'
+import { socials } from '@/constants/consts'
 
 export default function Contact() {
-  const socials = [
-    {
-      link: 'mailto:sdalator@uci.edu',
-      label: 'Email',
-      icon: SiGmail,
-      color: 'hover:fill-[#bf616a]',
-    },
-    {
-      link: 'https://www.linkedin.com/in/sebastian-at/',
-      label: 'LinkedIn',
-      icon: SiLinkedin,
-      color: 'hover:fill-[#5e81ac]',
-    },
-    {
-      link: 'https://www.github.com/stardustgd',
-      label: 'GitHub',
-      icon: SiGithub,
-      color: 'hover:fill-[#4c566a]',
-    },
-  ]
   return (
     <div className="min-h-[50vh] bg-[#21242B] px-4 sm:px-8 py-16">
       <div className="flex flex-col justify-center items-center gap-8">
