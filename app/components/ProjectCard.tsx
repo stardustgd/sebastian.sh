@@ -48,12 +48,13 @@ function ProjectCardBody({
   tags,
 }: ProjectCardBodyProps) {
   return (
-    <div className="flex flex-col md:flex-row justify-between gap-4">
+    <div className="flex flex-col md:flex-row justify-between gap-4 pt-4">
       <div className="relative aspect-[500/300] md:w-[40%]">
         <Image
           src={imageSrc}
           alt={imageAlt}
-          layout="fill"
+          fill
+          quality={80}
           className="object-cover rounded-md"
         />
       </div>
