@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/next'
 import type { Metadata } from 'next'
 import { Lexend_Deca } from 'next/font/google'
 import { ReactLenis } from 'lenis/react'
@@ -28,6 +29,7 @@ export default function RootLayout({
       <ReactLenis root>
         <body className={`${lexendDeca.className} antialiased`}>
           {children}
+          <Analytics />
         </body>
       </ReactLenis>
     </html>
