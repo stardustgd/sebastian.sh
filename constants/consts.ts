@@ -5,19 +5,19 @@ export const socials = [
     link: 'mailto:sdalator@uci.edu',
     label: 'Email',
     icon: SiGmail,
-    color: 'hover:fill-[#bf616a]',
+    className: 'hover:fill-[#bf616a]',
   },
   {
     link: 'https://www.linkedin.com/in/sebastian-at/',
     label: 'LinkedIn',
     icon: SiLinkedin,
-    color: 'hover:fill-[#5e81ac]',
+    className: 'hover:fill-[#5e81ac]',
   },
   {
     link: 'https://www.github.com/stardustgd',
     label: 'GitHub',
     icon: SiGithub,
-    color: 'hover:fill-[#4c566a]',
+    className: 'hover:fill-[#4c566a]',
   },
 ]
 

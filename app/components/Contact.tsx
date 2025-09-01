@@ -20,7 +20,7 @@ export default function Contact() {
                 title={social.label}
               >
                 <Icon
-                  className={`size-12 md:size-16 transition-all hover:scale-125 ${social.color}`}
+                  className={`size-12 md:size-16 transition-all hover:scale-125 ${social.className}`}
                 />
               </Link>
             )
