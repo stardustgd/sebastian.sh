@@ -1,26 +1,3 @@
-import { SiGmail, SiLinkedin, SiGithub } from 'react-icons/si'
-
-export const socials = [
-  {
-    link: 'mailto:sdalator@uci.edu',
-    label: 'Email',
-    icon: SiGmail,
-    className: 'hover:fill-[#bf616a]',
-  },
-  {
-    link: 'https://www.linkedin.com/in/sebastian-at/',
-    label: 'LinkedIn',
-    icon: SiLinkedin,
-    className: 'hover:fill-[#5e81ac]',
-  },
-  {
-    link: 'https://www.github.com/stardustgd',
-    label: 'GitHub',
-    icon: SiGithub,
-    className: 'hover:fill-[#4c566a]',
-  },
-]
-
 export const projects = [
   {
     title: 'Smart Pet Feeder',
