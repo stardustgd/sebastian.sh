@@ -30,16 +30,6 @@ export const projects = [
     tags: ['Android Studio', 'Java', 'Flutter', 'Figma'],
   },
   {
-    title: 'Peter Eater',
-    description:
-      'Web application for rating dishes served in UCI dining halls. Users can vote on individual dishes and share their favorite dining hall of the day.',
-    imageSrc: '/peter_eater.png',
-    imageAlt: 'Peter Eater image',
-    repoLink: 'https://github.com/stardustgd/Peter-Eater',
-    webLink: null,
-    tags: ['React Native', 'Flask', 'Figma', 'Next.js'],
-  },
-  {
     title: 'x86 Bank',
     description:
       'Console-based banking application built in x86 Assembly, featuring a text file database with multi-account support. Users are able to create an account, deposit and withdraw money, or calculate accumulated interest.',
