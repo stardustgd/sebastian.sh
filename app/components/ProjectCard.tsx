@@ -3,13 +3,15 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { FaGithub, FaLink } from 'react-icons/fa'
-import { motion } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
 import {
   ProjectCardHeaderProps,
   ProjectCardBodyProps,
   ProjectTagsProps,
   ProjectCardProps,
 } from '@/types'
+import styles from '@/styles/ProjectCard.module.css'
 
 function ProjectCardHeader({
   title,
@@ -108,8 +110,25 @@ export default function ProjectCard({
   webLink,
   tags,
 }: ProjectCardProps) {
+  const ref = useRef(null)
+
+  const isInView = useInView(ref, {
+    margin: '-50% 0px -50% 0px',
+  })
+
   return (
-    <div className="bg-[#2E3440] w-full max-w-screen-xl h-fit rounded-3xl p-6 md:p-8">
+    <motion.div
+      ref={ref}
+      className={styles.container}
+      animate={{
+        scale: isInView ? 1.05 : 1,
+        borderColor: isInView ? '#5e81ac' : '#4c566a',
+      }}
+      transition={{
+        type: 'spring',
+        bounce: '0.3',
+      }}
+    >
       <div className="flex flex-col gap-4">
         <ProjectCardHeader
           title={title}
@@ -125,6 +144,6 @@ export default function ProjectCard({
         webLink={webLink}
         tags={tags}
       />
-    </div>
+    </motion.div>
   )
 }

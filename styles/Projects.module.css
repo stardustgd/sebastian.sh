@@ -1,0 +1,18 @@
+.background {
+  min-height: 100vh;
+  background-color: #21242b;
+  padding: 4rem 1rem 4rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  box-shadow: 0 -1.5rem 2.5rem #21242bcc;
+}
+
+@media (min-width: 640px) {
+  .background {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}

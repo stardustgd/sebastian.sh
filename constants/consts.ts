@@ -2,7 +2,7 @@ export const projects = [
   {
     title: 'Smart Pet Feeder',
     description:
-      'An automated smart pet feeder powered by a Raspberry Pi and is controlled through a web app. Users can schedule feeding times, set up activities, play calming sounds, and check in on their pets via video call. This project is currently under development, with exciting features on the way!',
+      'An automated smart pet feeder powered by a Raspberry Pi and controlled through a full-stack web application. The feeder supports both scheduled and manual feeding with ±5g precision, real-time camera streaming, and motor-controlled dispensing. Built with Next.js, Express, and MongoDB.',
     imageSrc: '/smartpetfeeder.png',
     imageAlt: 'Smart Pet Feeder logo',
     repoLink: 'https://github.com/stardustgd/SmartPetFeeder',
@@ -12,7 +12,7 @@ export const projects = [
   {
     title: 'Soñando Sin Miedo',
     description:
-      'Responsive front-end web application for a non-profit organization aiming to empower scholars from underprivileged backgrounds. Users can view the various resources offered, and find contact information for the organization.',
+      'A responsive web application built for a nonprofit organization supporting scholars from underprivileged backgrounds. The website supports an average of 100 users per month and features full Spanish language support with locale-based routing.',
     imageSrc: '/sonando_sin_miedo.png',
     imageAlt: 'Soñando Sin Miedo image',
     repoLink: null,
@@ -22,7 +22,7 @@ export const projects = [
   {
     title: 'Interactive Campus Map',
     description:
-      'Mobile application for Antelope Valley College students to easily discover and access campus resources. Explore different campus buildings, learn about the resources available in each, and filter buildings by type.',
+      'A mobile application designed to help Antelope Valley College students navigate campus and discover available resources. Built with Android SDK and Flutter. This app was presented to the college board, resulting in $10,000 in funding to support future student developers.',
     imageSrc: '/avc_interactive_map.png',
     imageAlt: 'AVC Interactive Campus Map',
     repoLink: 'https://github.com/AVC-CS-Committee/InteractiveCampusMap',
@@ -32,7 +32,7 @@ export const projects = [
   {
     title: 'x86 Bank',
     description:
-      'Console-based banking application built in x86 Assembly, featuring a text file database with multi-account support. Users are able to create an account, deposit and withdraw money, or calculate accumulated interest.',
+      'A console-based banking application built in x86 Assembly featuring multi-account support and a file-based database. Users can create accounts, perform deposits and withdrawals, and calculate accumulated interest through a command-line interface.',
     imageSrc: '/x86Bank.png',
     imageAlt: 'x86 Bank',
     repoLink: 'https://github.com/stardustgd/x86-Bank',
