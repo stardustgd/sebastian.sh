@@ -1,118 +1,139 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useRef } from 'react'
+
+const squareSize = 96
+const colors = ['#5E81AC4D', '#8FBCBB33', '#88C0D040', '#81A1C13B']
+const bgColor = '#2E3440'
+const gridColor = '#D8DEE912'
+
+type Square = {
+  x: number
+  y: number
+  opacity: number
+  direction: 1 | -1
+  delay: number
+  color: string
+}
 
 export default function GridBackground() {
-  const gridRef = useRef(null)
-  const squareSize = 96 // size in px
-  const squareColors = ['#5E81AC4D', '#8FBCBB33', '#88C0D040', '#81A1C13B']
-  const [numSquares, setNumSquares] = useState(50)
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
-  const [filledSquares, setFilledSquares] = useState(() =>
-    fillRandomSquares(numSquares)
-  )
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const squaresRef = useRef<Square[]>([])
+  const animationRef = useRef<number>(null)
 
-  function getPos() {
-    const rows = Math.ceil(dimensions.width / squareSize)
-    const cols = Math.ceil(dimensions.height / squareSize)
+  function getRandomPos(width: number, height: number) {
+    const cols = Math.ceil(width / squareSize)
+    const rows = Math.ceil(height / squareSize)
 
-    return [Math.floor(Math.random() * rows), Math.floor(Math.random() * cols)]
+    return {
+      x: Math.floor(Math.random() * cols) * squareSize,
+      y: Math.floor(Math.random() * rows) * squareSize,
+    }
   }
 
-  function fillRandomSquares(numSquares: number) {
-    return Array.from({ length: numSquares }, (_, i) => ({
-      id: i,
-      pos: getPos(),
-    }))
-  }
-
-  const getNewSquarePos = (id: number) => {
-    setFilledSquares((currentSquares) =>
-      currentSquares.map((square) =>
-        square.id === id ? { ...square, pos: getPos() } : square
-      )
-    )
-  }
-
-  useEffect(() => {
-    let previousWidth: number | null = null
-    let previousHeight: number | null = null
-
-    const resizeObserver = new ResizeObserver((entries) => {
-      for (const entry of entries) {
-        const width = entry.contentRect.width
-        const height = entry.contentRect.height
-
-        const widthChanged =
-          previousWidth === null || Math.abs(width - previousWidth) >= 96
-        const heightChanged =
-          previousHeight === null || Math.abs(height - previousHeight) >= 96
-
-        if (widthChanged || heightChanged) {
-          previousWidth = width
-          previousHeight = height
-
-          if (width < 640) setNumSquares(15)
-          else if (width < 768) setNumSquares(25)
-          else setNumSquares(50)
-
-          setDimensions({ width, height })
-        }
+  function createSquares(count: number, width: number, height: number) {
+    squaresRef.current = Array.from({ length: count }, (_, i) => {
+      const pos = getRandomPos(width, height)
+      return {
+        ...pos,
+        opacity: 0,
+        direction: 1,
+        delay: i * 30,
+        color: colors[i % colors.length],
       }
     })
+  }
 
-    const currentGridRef = gridRef.current
+  function drawGrid(
+    ctx: CanvasRenderingContext2D,
+    width: number,
+    height: number
+  ) {
+    ctx.strokeStyle = gridColor
+    ctx.lineWidth = 1
 
-    if (currentGridRef) {
-      resizeObserver.observe(currentGridRef)
+    for (let x = 0; x <= width; x += squareSize) {
+      ctx.beginPath()
+      ctx.moveTo(x, 0)
+      ctx.lineTo(x, height)
+      ctx.stroke()
     }
 
-    return () => {
-      if (currentGridRef) {
-        resizeObserver.unobserve(currentGridRef)
+    for (let y = 0; y <= height; y += squareSize) {
+      ctx.beginPath()
+      ctx.moveTo(0, y)
+      ctx.lineTo(width, y)
+      ctx.stroke()
+    }
+  }
+
+  function animate(ctx: CanvasRenderingContext2D) {
+    const canvas = ctx.canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+    ctx.fillStyle = bgColor
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+
+    drawGrid(ctx, canvas.width, canvas.height)
+
+    squaresRef.current.forEach((square) => {
+      if (square.delay > 0) {
+        square.delay--
+        return
       }
-    }
-  }, [gridRef])
+
+      square.opacity += 0.005 * square.direction
+
+      if (square.opacity >= 0.5) square.direction = -1
+      if (square.opacity <= 0) {
+        square.direction = 1
+        square.opacity = 0
+
+        Object.assign(square, getRandomPos(canvas.width, canvas.height))
+      }
+
+      ctx.globalAlpha = square.opacity
+      ctx.fillStyle = square.color
+      ctx.fillRect(square.x, square.y, squareSize, squareSize)
+    })
+
+    ctx.globalAlpha = 1
+    animationRef.current = requestAnimationFrame(() => animate(ctx))
+  }
 
   useEffect(() => {
-    if (dimensions.width && dimensions.height) {
-      setFilledSquares(fillRandomSquares(numSquares))
+    const canvas = canvasRef.current
+    if (!canvas) return
+
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
+
+    const resize = () => {
+      const { innerWidth: width, innerHeight: height } = window
+      canvas.width = width
+      canvas.height = height
+
+      let count = 35
+      if (width < 640) count = 15
+      else if (width < 768) count = 25
+
+      createSquares(count, width, height)
     }
-  }, [dimensions, numSquares])
+
+    resize()
+    window.addEventListener('resize', resize)
+    animate(ctx)
+
+    return () => {
+      window.removeEventListener('resize', resize)
+      cancelAnimationFrame(animationRef.current!)
+    }
+  }, [])
 
   return (
-    <div
-      ref={gridRef}
-      className="absolute overflow-hidden z-[-10] inset-0 h-full w-full bg-[#2E3440] bg-[linear-gradient(to_right,#D8DEE912_1px,transparent_1px),linear-gradient(to_bottom,#D8DEE912_1px,transparent_1px)] bg-[size:96px_96px]"
-    >
-      {filledSquares.map(({ id, pos: [x, y] }, index) => (
-        <motion.span
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.5 }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            repeatDelay: 0.5,
-            delay: index * 0.5,
-            repeatType: 'reverse',
-          }}
-          onUpdate={(latest) => {
-            if (latest.opacity === 0) {
-              getNewSquarePos(id)
-            }
-          }}
-          key={id}
-          className="absolute"
-          style={{
-            width: `${squareSize}px`,
-            height: `${squareSize}px`,
-            top: `${y * squareSize}px`,
-            left: `${x * squareSize}px`,
-            backgroundColor: `${squareColors[index % 4]}`,
-          }}
-        />
-      ))}
-    </div>
+    <canvas
+      ref={canvasRef}
+      className="absolute inset-0 z-[-10] h-full w-full"
+    />
   )
 }
