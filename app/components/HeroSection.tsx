@@ -10,9 +10,15 @@ export default function HeroSection() {
   })
 
   const textY = useTransform(scrollYProgress, [0, 1], ['0%', '-900%'])
+  const zoom = useTransform(scrollYProgress, [0, 1], [1, 0.25])
+  const heroY = useTransform(scrollYProgress, [0, 1], ['0%', '100%'])
+  const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0])
 
   return (
-    <div className="relative flex flex-col justify-center items-start px-8 md:px-12 xl:px-28 gap-2 xl:gap-4 min-h-screen">
+    <motion.div
+      className="relative flex flex-col justify-center items-start px-8 md:px-12 xl:px-28 gap-2 xl:gap-4 min-h-screen"
+      style={{ scale: zoom, y: heroY, opacity }}
+    >
       <GridBackground />
       <motion.div style={{ y: textY }}>
         <h1 className="text-[#8FBCBB] text-5xl md:text-6xl xl:text-8xl font-semibold">
@@ -20,6 +26,6 @@ export default function HeroSection() {
         </h1>
         <h2 className="text-3xl xl:text-5xl font-medium">Software Engineer</h2>
       </motion.div>
-    </div>
+    </motion.div>
   )
 }
