@@ -20,6 +20,7 @@ export default function GridBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const squaresRef = useRef<Square[]>([])
   const animationRef = useRef<number>(null)
+  const prevSizeRef = useRef({ width: 0, height: 0 })
 
   function getRandomPos(width: number, height: number) {
     const cols = Math.ceil(width / squareSize)
@@ -32,16 +33,25 @@ export default function GridBackground() {
   }
 
   function createSquares(count: number, width: number, height: number) {
-    squaresRef.current = Array.from({ length: count }, (_, i) => {
+    const currCount = squaresRef.current.length
+
+    if (currCount >= count) return
+
+    const numSquares = count - currCount
+    const indx = currCount
+
+    const newSquares = Array.from({ length: numSquares }, (_, i) => {
       const pos = getRandomPos(width, height)
       return {
         ...pos,
         opacity: 0,
-        direction: 1,
-        delay: i * 30,
-        color: colors[i % colors.length],
+        direction: 1 as const,
+        delay: (indx + i) * 30,
+        color: colors[(indx + i) % colors.length],
       }
     })
+
+    squaresRef.current.push(...newSquares)
   }
 
   function drawGrid(
@@ -117,7 +127,18 @@ export default function GridBackground() {
       if (width < 640) count = 15
       else if (width < 768) count = 25
 
-      createSquares(count, width, height)
+      const prevSize = prevSizeRef.current
+      const shouldExtend = width > prevSize.width || height > prevSize.height
+
+      if (shouldExtend) {
+        createSquares(count, width, height)
+      }
+
+      if (count < squaresRef.current.length) {
+        squaresRef.current.length = count
+      }
+
+      prevSizeRef.current = { width, height }
     }
 
     resize()
