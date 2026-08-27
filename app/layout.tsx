@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Lexend_Deca } from 'next/font/google'
 import { ReactLenis } from 'lenis/react'
 import './globals.css'
+import Footer from './components/Footer'
 
 const lexendDeca = Lexend_Deca({ subsets: ['latin'] })
 
@@ -30,6 +31,7 @@ export default function RootLayout({
         <body className={`${lexendDeca.className} antialiased`}>
           {children}
           <Analytics />
+          <Footer />
         </body>
       </ReactLenis>
     </html>
